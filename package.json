@@ -1,0 +1,35 @@
+{
+  "name": "lru-benchmarks",
+  "version": "0.1.0",
+  "main": "index.js",
+  "description": "LRUs benchmarks 📊.",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3imed-jaberi/lru-benchmarks.git"
+  },
+  "scripts": {
+    "bench": "node index.js"
+  },
+  "author": {
+    "name": "imed jaberi",
+    "email": "imed-jaberi@outlook.com",
+    "url": "https://www.3imed-jaberi.com"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/3imed-jaberi/lru-benchmarks/issues"
+  },
+  "homepage": "https://github.com/3imed-jaberi/lru-benchmarks#readme"
+}
