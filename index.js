@@ -16,8 +16,8 @@ const path = require('path')
 
 // init vars.
 const packages = require('./packages')
-const pkgsLength = packages.caches.length;
-let promises = []
+const pkgsLength = packages.caches.length
+const promises = []
 
 // load a spinner.
 const spinner = ora(`Starting benchmark of ${pkgsLength} caches`).start()
@@ -33,36 +33,35 @@ packages
         await (index === 0 ? Promise.resolve() : promises[index - 1])
 
         // create an instance of worker.
-        const worker = new Worker('worker.js');
+        const worker = new Worker('worker.js')
 
         // message handler.
         worker.onmessage = ({ data }) => {
-          resolve(data);
-          worker.terminate();
-        };
+          resolve(data)
+          worker.terminate()
+        }
 
         // error handler.
         worker.onerror = (err) => {
-          reject(err);
-          worker.terminate(); 
-        };
+          reject(err)
+          worker.terminate()
+        }
 
         // update the spinner test.
-        spinner.text = `Benchmarking ${index + 1} of ${pkgsLength} caches [${cache}]`;
+        spinner.text = `Benchmarking ${index + 1} of ${pkgsLength} caches [${cache}]`
 
         // broadcasts a message.
-        worker.postMessage(cache);
+        worker.postMessage(cache)
 
-        // look up here.
+        //
         return
       } catch (error) {
         reject(error)
       }
     })
-  
-    promises.push(promise);
-  });
 
+    promises.push(promise)
+  })
 
 // run all workers promises.
 process.nextTick(async () => {
@@ -71,7 +70,7 @@ process.nextTick(async () => {
     const result = await Promise.all(promises)
 
     // update the spinner with success logo.
-    setTimeout(() => { spinner.succeed(); }, 1500)
+    setTimeout(() => { spinner.succeed() }, 1500)
 
     // store the result inside un json file.
     fs.writeFileSync(
@@ -80,13 +79,13 @@ process.nextTick(async () => {
     )
   } catch (error) {
     // update the spinner with failed logo.
-    setTimeout(() => { spinner.fail(); }, 1500)
+    setTimeout(() => { spinner.fail() }, 1500)
 
     // log the error then exist.
-    console.error(error.stack || error.message || error);
-    process.exit(1);
+    console.error(error.stack || error.message || error)
+    process.exit(1)
   }
 
   // stop the spinner.
-  setTimeout(() => { spinner.stop(); }, 1500)
+  setTimeout(() => { spinner.stop() }, 1500)
 })
