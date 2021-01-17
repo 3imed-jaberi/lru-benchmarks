@@ -59,12 +59,12 @@ self.onmessage = function ({ data: name }) {
     for (let index = 0; index < _cacheSize; index++) lru.set(_data1[index][0], _data1[index][1])
     timesStore.set.push(setTimer.stop().diff() / _base)
 
-    const get1Timer = new Timer().start();
+    const get1Timer = new Timer().start()
     for (let index = 0; index < _cacheSize; index++) lru.get(_data1[index][0])
     timesStore.get1.push(get1Timer.stop().diff() / _base)
 
     const updateTimer = new Timer().start()
-    for (let index = 0; index < _cacheSize; index++) lru.set(_data1[index][0],_data2[index][1])
+    for (let index = 0; index < _cacheSize; index++) lru.set(_data1[index][0], _data2[index][1])
     timesStore.update.push(updateTimer.stop().diff() / _base)
 
     const get2Timer = new Timer().start()
@@ -78,7 +78,7 @@ self.onmessage = function ({ data: name }) {
 
   ['set', 'get1', 'update', 'get2', 'evict'].forEach((method) => {
     resultsStore[method] = Number((_cacheSize / median(timesStore[method]).toFixed(2)).toFixed(0))
-  });
+  })
 
   postMessage(JSON.stringify(resultsStore))
 }
