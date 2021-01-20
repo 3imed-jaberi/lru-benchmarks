@@ -8,14 +8,14 @@
 'use strict'
 
 // Module dependencies.
-require('make-promises-safe')
-const Worker = require('tiny-worker')
-const ora = require('ora')
-const fs = require('fs')
-const path = require('path')
+import 'make-promises-safe'
+import Worker from 'tiny-worker'
+import ora from 'ora'
+import fs from 'fs'
+import path from 'path'
 
 // init vars.
-const packages = require('./packages')
+import packages from './packages.js'
 const pkgsLength = packages.caches.length
 const promises = []
 
@@ -75,7 +75,10 @@ process.nextTick(async () => {
     // store the result inside un json file.
     fs.writeFileSync(
       path.resolve(process.cwd(), 'benchmarks-results.json'),
-      JSON.stringify(result.map(item => JSON.parse(item)), null, 2)
+      JSON.stringify({
+        note: 'higher is better',
+        benchmarks: result.map(item => JSON.parse(item))
+      }, null, 2)
     )
   } catch (error) {
     // update the spinner with failed logo.
