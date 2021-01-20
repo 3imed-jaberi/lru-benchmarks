@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "main": "index.js",
   "description": "LRUs benchmarks 📊.",
-  "files": [
-    "index.js"
-  ],
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/3imed-jaberi/lru-benchmarks.git"
@@ -35,7 +33,12 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "hashlru": "^2.3.0",
-    "tiny-lru": "^7.0.6"
+    "lru-cache": "^6.0.0",
+    "lru_map": "^0.4.1",
+    "mnemonist": "^0.38.1",
+    "quick-lru": "^6.0.0",
+    "tiny-lru": "^7.0.6",
+    "ylru": "^1.2.1"
   },
   "bugs": {
     "url": "https://github.com/3imed-jaberi/lru-benchmarks/issues"
