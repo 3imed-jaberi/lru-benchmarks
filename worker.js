@@ -4,19 +4,37 @@ const median = require('median')
 const Timer = require('ns-timer')
 
 // ============== BENCHMARKS ============== //
+// LRUs modules.
+const tinyLRU = require('tiny-lru')
+const hashLRU = require('hashlru')
+const MnemonistLRUCache = require('mnemonist/lru-cache')
+const MnemonistLRUMap = require('mnemonist/lru-map')
+const LRUCacheHyphen = require('lru-cache')
+const { LRUMap: jsLRU } = require('lru_map')
+// esm warn.
+// const QuickLRU = (async () => await import('quick-lru'))()
+const yLRU = require('ylru');
+
+// LRUs funcs.
 const cachesBenchs = {
-  'tiny-lru': require('tiny-lru'),
-  hashlru: require('hashlru')
+  'tiny-lru': tinyLRU,
+  'hashlru': hashLRU,
+  'mnemonist-object': n => new MnemonistLRUCache(n),
+  'mnemonist-map': n => new MnemonistLRUMap(n),
+  'lru-cache': n => new LRUCacheHyphen(n),
+  'js-lru': n => new jsLRU(n),
+  //'quick-lru': n => new QuickLRU({ maxSize: n }),
+  'ylru': n => new yLRU(n)
 }
 
 // ======================================== //
 
 // ================ WORKER ================ //
 // init vars.
-const _cacheSize = 2e5 // 200000
+const _cacheSize = 8e5 // 200000
 const _evict = _cacheSize * 2 // 400000
-const _times = 5
-const _base = 1e6 // 1000000
+const _times = 20
+const _base = 4e6 // 1000000
 const _data1 = new Array(_evict)
 const _data2 = new Array(_evict)
 
