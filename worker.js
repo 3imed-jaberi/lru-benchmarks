@@ -31,10 +31,10 @@ const cachesBenchs = {
 
 // ================ WORKER ================ //
 // init vars.
-const _cacheSize = 8e5 // 200000
-const _evict = _cacheSize * 2 // 400000
+const _cacheSize = 8e5 // 800000
+const _evict = _cacheSize * 2 // 1600000
 const _times = 20
-const _base = 4e6 // 1000000
+const _base = 4e6 // 4000000
 const _data1 = new Array(_evict)
 const _data2 = new Array(_evict)
 
