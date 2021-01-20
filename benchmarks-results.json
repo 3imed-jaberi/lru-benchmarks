@@ -1,0 +1,53 @@
+{
+  "note": "higher is better",
+  "benchmarks": [
+    {
+      "name": "tiny-lru",
+      "set": 37879,
+      "get1": 151515,
+      "update": 118871,
+      "get2": 122511,
+      "evict": 20812
+    },
+    {
+      "name": "hashlru",
+      "set": 58140,
+      "get1": 60377,
+      "update": 62016,
+      "get2": 58267,
+      "evict": 19249
+    },
+    {
+      "name": "mnemonist-object",
+      "set": 67058,
+      "get1": 224090,
+      "update": 173913,
+      "get2": 237389,
+      "evict": 28633
+    },
+    {
+      "name": "lru-cache",
+      "set": 6091,
+      "get1": 18553,
+      "update": 17953,
+      "get2": 18993,
+      "evict": 4485
+    },
+    {
+      "name": "js-lru",
+      "set": 6919,
+      "get1": 21248,
+      "update": 21305,
+      "get2": 21692,
+      "evict": 4639
+    },
+    {
+      "name": "ylru",
+      "set": 12005,
+      "get1": 8877,
+      "update": 10875,
+      "get2": 9664,
+      "evict": 11429
+    }
+  ]
+}
